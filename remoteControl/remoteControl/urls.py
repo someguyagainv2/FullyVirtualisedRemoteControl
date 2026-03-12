@@ -30,4 +30,6 @@ urlpatterns = [
     path("api/recievePositionToServer/<str:server_id>/", views.recievePositionToServer),
     path("api/sendPositionToServer/<str:server_id>/", views.sendPositionToServer),
     path("api/setPlayerName/<str:server_id>/", views.setPlayerName),
+    path("api/lightSet/<str:server_id>/", views.setTime),
+    path("api/recieveLight/<str:server_id>/", views.getTime),
 ]

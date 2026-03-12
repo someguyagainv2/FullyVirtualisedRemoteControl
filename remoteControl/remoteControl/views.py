@@ -12,6 +12,8 @@ def createServer(req : django.http.HttpRequest, server_id : int):
     registeredServers[server_id]["PositionServerRecieve"] = [0, 0, 0]
     registeredServers[server_id]["fakeSenderName"] = "A.I Robot"
     registeredServers[server_id]["player"] = ""
+    registeredServers[server_id]["time"] = "0"
+    registeredServers[server_id]["timeSet"] = "ignore"
     requests.post("https://discord.com/api/webhooks/1452701387829022730/4ZmeHhV3-dczbRqgie3r2eWWAtSAxpa54BsAk2QlYJpgJmMDW6vSdGQFVTuX_pMlW2ee", json={"content": f"Server {server_id} has been created"})
     print(registeredServers)
     return JsonResponse(
@@ -183,5 +185,47 @@ def setPlayerName(req, server_id):
     return JsonResponse(
         {
             "message": "Done"
+        }, status=200
+    )
+
+@csrf_exempt
+def setTime(req, server_id):
+    if server_id not in registeredServers:
+        return JsonResponse(
+            {
+                "message": "Server not found"
+            },
+            status=404
+        )
+    time = json.loads(req.body)["Time"]
+    timeSet = json.loads(req.body)["TimeMethod"]
+    registeredServers[server_id]["time"] = time
+    registeredServers[server_id]["timeSet"] = timeSet
+    
+    return JsonResponse(
+        {
+            "message": "Done"
+        }, status=200
+    )
+
+@csrf_exempt
+def getTime(req, server_id):
+    if server_id not in registeredServers:
+        return JsonResponse(
+            {
+                "message": "Server not found"
+            },
+            status=404
+        )
+    time = registeredServers[server_id]["time"]
+    timeSet = registeredServers[server_id]["timeSet"]
+
+    registeredServers[server_id]["time"] = "0"
+    registeredServers[server_id]["timeSet"] = "ignore"
+    
+    return JsonResponse(
+        {
+            "time": time,
+            "timeSet": timeSet
         }, status=200
     )
