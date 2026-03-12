@@ -20,9 +20,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("api/createServer/<int:server_id>/", views.createServer),
-    path("api/sendChatToClient/<int:server_id>/", views.sendChatToClient),
-    path("api/recieveChatClient/<int:server_id>/", views.recieveChatClient),
-    path("api/sendChatToServer/<int:server_id>/", views.sendChatToServer),
-    path("api/recieveChatServer/<int:server_id>/", views.recieveChatServer)
+    path("api/createServer/<str:server_id>/", views.createServer),
+    path("api/sendChatToClient/<str:server_id>/", views.sendChatToClient),
+    path("api/recieveChatClient/<str:server_id>/", views.recieveChatClient),
+    path("api/sendChatToServer/<str:server_id>/", views.sendChatToServer),
+    path("api/recieveChatServer/<str:server_id>/", views.recieveChatServer),
+    path("api/recievePositionToClient/<str:server_id>/", views.recievePositionToClient),
+    path("api/sendPositionToClient/<str:server_id>/", views.sendPositionToClient),
+    path("api/recievePositionToServer/<str:server_id>/", views.recievePositionToServer),
+    path("api/sendPositionToServer/<str:server_id>/", views.sendPositionToServer),
+    path("api/setPlayerName/<str:server_id>/", views.setPlayerName),
 ]
