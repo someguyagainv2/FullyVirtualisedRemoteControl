@@ -22,4 +22,7 @@ from . import views
 urlpatterns = [
     path("api/createServer/<int:server_id>/", views.createServer),
     path("api/sendChatToClient/<int:server_id>/", views.sendChatToClient),
+    path("api/recieveChatClient/<int:server_id>/", views.recieveChatClient),
+    path("api/sendChatToServer/<int:server_id>/", views.sendChatToServer),
+    path("api/recieveChatServer/<int:server_id>/", views.recieveChatServer)
 ]
