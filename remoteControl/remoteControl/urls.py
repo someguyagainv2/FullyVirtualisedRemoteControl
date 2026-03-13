@@ -21,15 +21,6 @@ from . import views
 
 urlpatterns = [
     path("api/createServer/<str:server_id>/", views.createServer),
-    path("api/sendChatToClient/<str:server_id>/", views.sendChatToClient),
-    path("api/recieveChatClient/<str:server_id>/", views.recieveChatClient),
-    path("api/sendChatToServer/<str:server_id>/", views.sendChatToServer),
-    path("api/recieveChatServer/<str:server_id>/", views.recieveChatServer),
-    path("api/recievePositionToClient/<str:server_id>/", views.recievePositionToClient),
-    path("api/sendPositionToClient/<str:server_id>/", views.sendPositionToClient),
-    path("api/recievePositionToServer/<str:server_id>/", views.recievePositionToServer),
-    path("api/sendPositionToServer/<str:server_id>/", views.sendPositionToServer),
-    path("api/setPlayerName/<str:server_id>/", views.setPlayerName),
-    path("api/lightSet/<str:server_id>/", views.setTime),
-    path("api/recieveLight/<str:server_id>/", views.getTime),
+    path("api/clientHandle/<str:server_id>/", views.mainHandlerClient),
+    path("api/serverHandle/<str:server_id>/", views.mainHandlerServer)
 ]
